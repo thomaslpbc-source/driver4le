@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver4le</title>
+  <meta name="description"
+    content="Driver4le, le jeu quotidien où il faut deviner le pilote caché derrière 6 indices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bebas+Neue&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./src/css/styles.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="icon-button" id="rulesButton" aria-label="Afficher les règles">ⓘ</button>
+        <button class="icon-button" id="themeButton" aria-label="Activer le mode sombre" aria-pressed="false"
+          title="Activer le mode sombre">◐</button>
+      </div>
+      <img class="brand-logo" src="./src/assets/images/logo/Driver4le.png" alt="Driver4le" />
+      <div class="topbar__right">
+        <div class="countdown-card">
+          <span class="countdown-card__label">Prochaine rotation</span>
+          <strong id="rotationCountdown">--:--</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <div class="game-frame">
+        <section class="game-panel">
+          <div class="search-area">
+            <label class="sr-only" for="driverSearch">Entrer un pilote</label>
+            <div class="search-box">
+              <input id="driverSearch" type="text" autocomplete="off" placeholder="Rentrer un pilote" maxlength="60" />
+              <button id="guessButton" class="primary-button" type="button">Valider</button>
+            </div>
+            <ul id="searchResults" class="search-results" hidden></ul>
+            <p id="feedbackMessage" class="feedback-message" aria-live="polite"></p>
+          </div>
+
+          <section id="resultBanner" class="result-banner" hidden>
+            <img id="resultPortrait" class="result-banner__portrait" alt="Portrait du pilote" />
+            <div>
+              <h1 id="resultName" class="result-banner__title"></h1>
+              <p id="resultStatus" class="result-banner__status"></p>
+              <p class="result-banner__text">
+                Pour plus d'informations sur le pilote, voici sa page Wikipédia
+                <a id="resultWikiLink" target="_blank" rel="noreferrer">ici</a>.
+              </p>
+              <p class="result-banner__text">Reviens à la prochaine rotation pour un nouveau pilote.</p>
+            </div>
+          </section>
+
+          <section class="clues-grid" aria-label="Indices du pilote du jour">
+            <article class="clue-card clue-card--outline is-visible" data-clue="outline">
+              <div class="clue-card__body clue-card__body--center">
+                <img id="outlineImage" class="driver-outline" alt="Silhouette du pilote" />
+              </div>
+            </article>
+
+            <article class="clue-card clue-card--helmet is-hidden" data-clue="helmet">
+              <div class="clue-card__body clue-card__body--center">
+                <img id="helmetImage" class="driver-helmet" alt="Casque du pilote" />
+              </div>
+            </article>
+
+            <article class="clue-card clue-card--quote is-hidden" data-clue="quote">
+              <div class="clue-card__body clue-card__body--text">
+                <p id="quoteText"></p>
+              </div>
+            </article>
+
+            <article class="clue-card clue-card--teams is-hidden" data-clue="teams">
+              <div class="clue-card__body clue-card__body--text">
+                <p id="teamsText"></p>
+              </div>
+            </article>
+
+            <article class="clue-card clue-card--stats is-hidden" data-clue="stats">
+              <div class="clue-card__body">
+                <div class="stats-grid" id="statsGrid"></div>
+              </div>
+            </article>
+
+            <article class="clue-card clue-card--nationality is-hidden" data-clue="nationality">
+              <div class="clue-card__body clue-card__body--nationality">
+                <img id="flagImage" class="flag-image" alt="Drapeau du pilote" hidden />
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <a class="credits-link" href="./credits.html">Crédits</a>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="rulesDialog" class="rules-dialog">
+    <form method="dialog" class="rules-dialog__panel">
+      <button class="rules-dialog__close" aria-label="Fermer">✕</button>
+      <h2>Découvrez le pilote !</h2>
+      <p>
+        Le but du jeu est de découvrir le pilote qui se cache derrière les indices.
+      </p>
+      <p>
+        Le premier indice est une silhouette du pilote, le second son casque, le troisième une phrase/radio,
+        le quatrième ses différentes écuries, le cinquième certaines stats et le sixième sa nationalité.
+      </p>
+      <p>
+        Vous disposez de 6 essais. À chaque erreur, un nouvel indice apparaît jusqu'au dernier.
+      </p>
+      <p>
+        Si vous trouvez le bon pilote, les indices restants sont révélés et la partie est gagnée.
+        Si vous échouez au dernier indice, le pilote est révélé.
+      </p>
+      <p>
+        Chaque jour la page est actualisé à 12:00 (heure locale). Bon jeu !
+      </p>
+    </form>
+  </dialog>
+
+  <script type="module" src="./src/js/app.js"></script>
+</body>
+
+</html>

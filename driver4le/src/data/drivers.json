@@ -1,0 +1,82 @@
+[
+  {
+    "id": "lewis-hamilton",
+    "name": "Lewis Hamilton",
+    "slug": "lewis-hamilton",
+    "dayIndex": 1,
+    "nationality": "British",
+    "outlineImage": "./src/assets/images/outlines/lewis-outline.png",
+    "helmetImage": "./src/assets/images/helmets/lewis-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/lewis.png",
+    "quote": "That’s for all the kids out there who dream the impossible. You can do it too man! I believe in you guys!",
+    "teams": [
+      "McLaren",
+      "Mercedes",
+      "Ferrari"
+    ],
+    "stats": {
+      "grandPrix": 382,
+      "seasons": 20,
+      "titles": 7,
+      "wins": 105,
+      "podiums": 202,
+      "poles": 104,
+      "dnf": 34,
+      "firstGrandPrix": 2007
+    },
+    "flagImage": "./src/assets/images/flags/great-britain.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Lewis_Hamilton"
+  },
+  {
+    "id": "lando-norris",
+    "name": "Lando Norris",
+    "slug": "lando-norris",
+    "dayIndex": 2,
+    "nationality": "British",
+    "outlineImage": "./src/assets/images/outlines/lando-outline.png",
+    "helmetImage": "./src/assets/images/helmets/lando-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/lando.png",
+    "quote": "It's friday theeeen... It's saturday, sunday what ?",
+    "teams": [
+      "McLaren"
+    ],
+    "stats": {
+      "grandPrix": 154,
+      "seasons": 8,
+      "titles": 1,
+      "wins": 11,
+      "podiums": 44,
+      "poles": 16,
+      "dnf": 14,
+      "firstGrandPrix": 2019
+    },
+    "flagImage": "./src/assets/images/flags/great-britain.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Lando_Norris"
+  },
+  {
+    "id": "rio-haryanto",
+    "name": "Rio Haryanto",
+    "slug": "rio-haryanto",
+    "dayIndex": 3,
+    "nationality": "Indonesian",
+    "outlineImage": "./src/assets/images/outlines/rio-outline.png",
+    "helmetImage": "./src/assets/images/helmets/rio-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/rio.png",
+    "quote": "Without the support of my country, it would not have been possible.",
+    "teams": [
+      "Manor Racing"
+    ],
+    "stats": {
+      "grandPrix": 12,
+      "seasons": 1,
+      "titles": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "dnf": 3,
+      "firstGrandPrix": 2016
+    },
+    "flagImage": "./src/assets/images/flags/indonesia.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Rio_Haryanto"
+  }
+]
