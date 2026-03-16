@@ -78,5 +78,92 @@
     },
     "flagImage": "./src/assets/images/flags/indonesia.png",
     "wikipediaUrl": "https://fr.wikipedia.org/wiki/Rio_Haryanto"
+  },
+  {
+    "id": "jean-alesi",
+    "name": "Jean Alesi",
+    "slug": "jean-alesi",
+    "dayIndex": 4,
+    "nationality": "French",
+    "outlineImage": "./src/assets/images/outlines/jean-alesi-outline.png",
+    "helmetImage": "./src/assets/images/helmets/jean-alesi-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/jean-alesi.png",
+    "quote": "Ferrari is not just a team, it is a passion.",
+    "teams": [
+      "Tyrrell",
+      "Ferrari",
+      "Benetton",
+      "Sauber",
+      "Prost",
+      "Jordan"
+    ],
+    "stats": {
+      "grandPrix": 201,
+      "seasons": 13,
+      "titles": 0,
+      "wins": 1,
+      "podiums": 32,
+      "poles": 2,
+      "dnf": 87,
+      "firstGrandPrix": 1989
+    },
+    "flagImage": "./src/assets/images/flags/france.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Jean_Alesi"
+  },
+  {
+    "id": "kimi-raikkonen",
+    "name": "Kimi Räikkönen",
+    "slug": "kimi-raikkonen",
+    "dayIndex": 5,
+    "nationality": "Finnish",
+    "outlineImage": "./src/assets/images/outlines/kimi-outline.png",
+    "helmetImage": "./src/assets/images/helmets/kimi-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/kimi.png",
+    "quote": "Just leave me alone, I know what to do.",
+    "teams": [
+      "Sauber",
+      "McLaren",
+      "Ferrari",
+      "Lotus",
+      "Alfa Romeo"
+    ],
+    "stats": {
+      "grandPrix": 353,
+      "seasons": 19,
+      "titles": 1,
+      "wins": 21,
+      "podiums": 103,
+      "poles": 18,
+      "dnf": 71,
+      "firstGrandPrix": 2001
+    },
+    "flagImage": "./src/assets/images/flags/finland.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Kimi_Räikkönen"
+  },
+  {
+    "id": "franck-montagny",
+    "name": "Franck Montagny",
+    "slug": "franck-montagny",
+    "dayIndex": 6,
+    "nationality": "French",
+    "outlineImage": "./src/assets/images/outlines/franck-outline.png",
+    "helmetImage": "./src/assets/images/helmets/franck-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/franck.png",
+    "quote": "You have to be a little crazy to be a Formula 1 driver.",
+    "teams": [
+      "Super Aguri"
+    ],
+    "stats": {
+      "grandPrix": 7,
+      "seasons": 1,
+      "titles": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "dnf": 4,
+      "firstGrandPrix": 2006
+    },
+    "flagImage": "./src/assets/images/flags/france.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Franck_Montagny"
   }
 ]

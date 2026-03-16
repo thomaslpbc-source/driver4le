@@ -2,7 +2,7 @@
 export const GAME_CONFIG = {
   maxAttempts: 6,
   clueOrder: ['outline', 'helmet', 'quote', 'teams', 'stats', 'nationality'],
-  rotationIntervalMs: 60 * 1000,
+  rotationIntervalMs: 120 * 1000,
   storagePrefix: 'driver4le',
 };
 
