@@ -882,3 +882,35 @@ button {
       translate3d(var(--confetti-drift, 0px), 115vh, 0) rotate(calc(var(--confetti-rotate, 0deg) + 540deg));
   }
 }
+
+.trophy-piece {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  line-height: 1;
+  user-select: none;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 215, 92, 0.45)) drop-shadow(0 0 18px rgba(255, 204, 64, 0.22));
+  transform: translate3d(0, 0, 0) rotate(var(--trophy-rotate, 0deg));
+  animation-name: trophy-fall;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes trophy-fall {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0, -8vh, 0) rotate(var(--trophy-rotate, 0deg)) scale(0.8);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate3d(var(--trophy-drift, 0px), 115vh, 0) rotate(calc(var(--trophy-rotate, 0deg) + 180deg)) scale(1.05);
+  }
+}

@@ -191,7 +191,7 @@ export function renderThemeButton(elements, theme) {
   elements.themeButton.title = isDark ? 'Activer le mode clair' : 'Activer le mode sombre';
 }
 
-export function playGoldenConfetti() {
+function createCelebrationLayer() {
   const existingLayer = document.querySelector('.confetti-layer');
   if (existingLayer) existingLayer.remove();
 
@@ -199,6 +199,10 @@ export function playGoldenConfetti() {
   layer.className = 'confetti-layer';
   document.body.append(layer);
 
+  return layer;
+}
+
+function spawnGoldenConfetti(layer) {
   const confettiCount = 90;
   const fragments = [];
 
@@ -228,6 +232,43 @@ export function playGoldenConfetti() {
   }
 
   layer.append(...fragments);
+}
+
+function spawnFallingTrophies(layer) {
+  const trophyCount = 28;
+  const trophies = [];
+
+  for (let index = 0; index < trophyCount; index += 1) {
+    const trophy = document.createElement('span');
+    trophy.className = 'trophy-piece';
+    trophy.textContent = '🏆';
+
+    const left = Math.random() * 100;
+    const delay = Math.random() * 1.1;
+    const duration = 4.5 + Math.random() * 2.5;
+    const size = 26 + Math.random() * 26;
+    const drift = (Math.random() - 0.5) * 260;
+    const rotation = (Math.random() - 0.5) * 120;
+
+    trophy.style.left = `${left}vw`;
+    trophy.style.top = '-12vh';
+    trophy.style.fontSize = `${size}px`;
+    trophy.style.animationDelay = `${delay}s`;
+    trophy.style.animationDuration = `${duration}s`;
+    trophy.style.setProperty('--trophy-drift', `${drift}px`);
+    trophy.style.setProperty('--trophy-rotate', `${rotation}deg`);
+
+    trophies.push(trophy);
+  }
+
+  layer.append(...trophies);
+}
+
+export function playGoldenConfetti() {
+  const layer = createCelebrationLayer();
+
+  spawnGoldenConfetti(layer);
+  spawnFallingTrophies(layer);
 
   window.setTimeout(() => {
     layer.remove();
