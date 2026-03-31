@@ -13,6 +13,8 @@ import {
   updateInputAvailability,
   renderCountdown,
   renderThemeButton,
+  playGoldenConfetti,
+  refitResponsiveTexts,
 } from './modules/ui.js';
 
 let drivers = [];
@@ -65,6 +67,9 @@ function bindEvents() {
   elements.themeButton.addEventListener('click', toggleTheme);
   document.addEventListener('keydown', handleGlobalKeyboard);
   document.addEventListener('click', handleOutsideClick);
+  window.addEventListener('resize', () => {
+    refitResponsiveTexts(elements);
+  });
   elements.searchResults.addEventListener('click', handleSearchSelection);
   elements.rulesButton.addEventListener('click', () => elements.rulesDialog.showModal());
   elements.rulesDialog.addEventListener('click', (event) => {
@@ -194,6 +199,8 @@ function submitCurrentGuess() {
     return;
   }
 
+  const previousStatus = state.status;
+
   state = submitGuess(state, selectedDriver, activeDriver);
   saveGameState(rotationKey, state);
 
@@ -201,6 +208,10 @@ function submitCurrentGuess() {
   renderFeedback(elements, state.feedback);
   renderFinalState(elements, state, activeDriver);
   updateInputAvailability(elements, state);
+
+  if (previousStatus !== 'won' && state.status === 'won') {
+    playGoldenConfetti();
+  }
 
   resetSearchState();
 }

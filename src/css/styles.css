@@ -601,10 +601,17 @@ button {
 #quoteText,
 #teamsText {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1.15;
+  color: var(--text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+#quoteText {
   font-size: 1.45rem;
   font-weight: 500;
-  line-height: 1.2;
-  color: var(--text);
 }
 
 #teamsText {
@@ -832,5 +839,46 @@ button {
 
   .credits-page {
     padding-inline: 16px;
+  }
+}
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.confetti-piece {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  background:
+    linear-gradient(135deg, #fff6bf 0%, #f5d96b 35%, #c89b2b 70%, #fff2a6 100%);
+  box-shadow:
+    0 0 8px rgba(255, 215, 92, 0.45),
+    0 0 18px rgba(255, 204, 64, 0.22);
+  transform: translate3d(0, 0, 0) rotate(var(--confetti-rotate, 0deg));
+  animation-name: golden-confetti-fall;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes golden-confetti-fall {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0, -8vh, 0) rotate(var(--confetti-rotate, 0deg));
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.95;
+    transform:
+      translate3d(var(--confetti-drift, 0px), 115vh, 0) rotate(calc(var(--confetti-rotate, 0deg) + 540deg));
   }
 }

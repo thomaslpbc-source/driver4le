@@ -37,6 +37,30 @@ export function cacheDom() {
   };
 }
 
+function fitTextInCard(textElement, {
+  minFontSize = 0.8,
+  maxFontSize = 1.7,
+  step = 0.02,
+} = {}) {
+  if (!textElement) return;
+
+  const parent = textElement.parentElement;
+  if (!parent) return;
+
+  textElement.style.fontSize = `${maxFontSize}rem`;
+
+  while (
+    parseFloat(textElement.style.fontSize) > minFontSize
+    && (
+      textElement.scrollWidth > parent.clientWidth
+      || textElement.scrollHeight > parent.clientHeight
+    )
+  ) {
+    const nextSize = parseFloat(textElement.style.fontSize) - step;
+    textElement.style.fontSize = `${Math.max(nextSize, minFontSize)}rem`;
+  }
+}
+
 export function renderDriverData(elements, driver) {
   elements.outlineImage.src = driver.outlineImage;
   elements.outlineImage.alt = `Silhouette de ${driver.name}`;
@@ -44,6 +68,18 @@ export function renderDriverData(elements, driver) {
   elements.helmetImage.alt = `Casque de ${driver.name}`;
   elements.quoteText.textContent = `« ${driver.quote} »`;
   elements.teamsText.innerHTML = driver.teams.join(' <span aria-hidden="true">→</span> ');
+
+  fitTextInCard(elements.quoteText, {
+    minFontSize: 0.78,
+    maxFontSize: 1.45,
+    step: 0.02,
+  });
+
+  fitTextInCard(elements.teamsText, {
+    minFontSize: 0.72,
+    maxFontSize: 1.7,
+    step: 0.02,
+  });
 
   if (driver.flagImage) {
     elements.flagImage.hidden = false;
@@ -153,4 +189,61 @@ export function renderThemeButton(elements, theme) {
   elements.themeButton.setAttribute('aria-pressed', String(isDark));
   elements.themeButton.setAttribute('aria-label', isDark ? 'Activer le mode clair' : 'Activer le mode sombre');
   elements.themeButton.title = isDark ? 'Activer le mode clair' : 'Activer le mode sombre';
+}
+
+export function playGoldenConfetti() {
+  const existingLayer = document.querySelector('.confetti-layer');
+  if (existingLayer) existingLayer.remove();
+
+  const layer = document.createElement('div');
+  layer.className = 'confetti-layer';
+  document.body.append(layer);
+
+  const confettiCount = 90;
+  const fragments = [];
+
+  for (let index = 0; index < confettiCount; index += 1) {
+    const piece = document.createElement('span');
+    piece.className = 'confetti-piece';
+
+    const left = Math.random() * 100;
+    const delay = Math.random() * 0.9;
+    const duration = 4 + Math.random() * 3;
+    const size = 8 + Math.random() * 10;
+    const rotation = Math.random() * 360;
+    const drift = (Math.random() - 0.5) * 220;
+    const shape = Math.random() > 0.72 ? '50%' : '2px';
+
+    piece.style.left = `${left}vw`;
+    piece.style.top = '-12vh';
+    piece.style.width = `${size}px`;
+    piece.style.height = `${size * 0.55}px`;
+    piece.style.borderRadius = shape;
+    piece.style.animationDelay = `${delay}s`;
+    piece.style.animationDuration = `${duration}s`;
+    piece.style.setProperty('--confetti-rotate', `${rotation}deg`);
+    piece.style.setProperty('--confetti-drift', `${drift}px`);
+
+    fragments.push(piece);
+  }
+
+  layer.append(...fragments);
+
+  window.setTimeout(() => {
+    layer.remove();
+  }, 9500);
+}
+
+export function refitResponsiveTexts(elements) {
+  fitTextInCard(elements.quoteText, {
+    minFontSize: 0.78,
+    maxFontSize: 1.45,
+    step: 0.02,
+  });
+
+  fitTextInCard(elements.teamsText, {
+    minFontSize: 0.72,
+    maxFontSize: 1.7,
+    step: 0.02,
+  });
 }
