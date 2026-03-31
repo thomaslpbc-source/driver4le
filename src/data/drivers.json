@@ -165,5 +165,176 @@
     },
     "flagImage": "./src/assets/images/flags/france.png",
     "wikipediaUrl": "https://fr.wikipedia.org/wiki/Franck_Montagny"
+  },
+  {
+    "id": "robert-kubica",
+    "name": "Robert Kubica",
+    "slug": "robert-kubica",
+    "dayIndex": 7,
+    "nationality": "Polish",
+    "outlineImage": "./src/assets/images/outlines/robert-outline.png",
+    "helmetImage": "./src/assets/images/helmets/robert-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/robert.png",
+    "quote": "When I look back now, my Formula 1 comeback was one of my biggest, if not the biggest, achievement of my life",
+    "teams": [
+      "BMW Sauber",
+      "Renault",
+      "Williams",
+      "Alfa Romeo"
+    ],
+    "stats": {
+      "grandPrix": 99,
+      "seasons": 7,
+      "titles": 0,
+      "wins": 1,
+      "podiums": 12,
+      "poles": 1,
+      "dnf": 14,
+      "firstGrandPrix": 2006
+    },
+    "flagImage": "./src/assets/images/flags/poland.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Robert_Kubica"
+  },
+  {
+    "id": "mika-hakkinen",
+    "name": "Mika Häkkinen",
+    "slug": "mika-hakkinen",
+    "dayIndex": 8,
+    "nationality": "Finnish",
+    "outlineImage": "./src/assets/images/outlines/mika-outline.png",
+    "helmetImage": "./src/assets/images/helmets/mika-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/mika.png",
+    "quote": "If you win one race, you're a hero. If you lose the next, you're a loser.",
+    "teams": [
+      "Lotus",
+      "McLaren"
+    ],
+    "stats": {
+      "grandPrix": 161,
+      "seasons": 11,
+      "titles": 2,
+      "wins": 20,
+      "podiums": 51,
+      "poles": 26,
+      "dnf": 62,
+      "firstGrandPrix": 1991
+    },
+    "flagImage": "./src/assets/images/flags/finland.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Mika_Häkkinen"
+  },
+  {
+    "id": "maria-teresa-de-filippis",
+    "name": "Maria Teresa de Filippis",
+    "slug": "maria-teresa-de-filippis",
+    "dayIndex": 9,
+    "nationality": "Italian",
+    "outlineImage": "./src/assets/images/outlines/maria-teresa-outline.png",
+    "helmetImage": "./src/assets/images/helmets/maria-teresa.png",
+    "portraitImage": "./src/assets/images/portraits/maria-teresa.png",
+    "quote": "Fangio told me I drove too fast.",
+    "teams": [
+      "Lotus",
+      "McLaren"
+    ],
+    "stats": {
+      "grandPrix": 3,
+      "seasons": 1,
+      "titles": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "dnf": 2,
+      "firstGrandPrix": 1958
+    },
+    "flagImage": "./src/assets/images/flags/italy.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Maria_Teresa_de_Filippis"
+  },
+  {
+    "id": "oliver-bearman",
+    "name": "Oliver Bearman",
+    "slug": "oliver-bearman",
+    "dayIndex": 10,
+    "nationality": "British",
+    "outlineImage": "./src/assets/images/outlines/olie-outline.png",
+    "helmetImage": "./src/assets/images/helmets/olie-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/olie.png",
+    "quote": "If you win one race, you're a hero. If you lose the next, you're a loser.",
+    "teams": [
+      "Ferrari",
+      "Haas"
+    ],
+    "stats": {
+      "grandPrix": 30,
+      "seasons": 3,
+      "titles": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "dnf": 4,
+      "firstGrandPrix": 2024
+    },
+    "flagImage": "./src/assets/images/flags/great-britain.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Oliver_Bearman"
+  },
+  {
+    "id": "ayrton-senna",
+    "name": "Ayrton Senna",
+    "slug": "ayrton-senna",
+    "dayIndex": 11,
+    "nationality": "Brazilian",
+    "outlineImage": "./src/assets/images/outlines/ayrton-outline.png",
+    "helmetImage": "./src/assets/images/helmets/ayrton-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/ayrton.png",
+    "quote": "If you win one race, you're a hero. If you lose the next, you're a loser.",
+    "teams": [
+      "Toleman",
+      "Lotus",
+      "McLaren",
+      "Williams"
+    ],
+    "stats": {
+      "grandPrix": 161,
+      "seasons": 11,
+      "titles": 3,
+      "wins": 41,
+      "podiums": 80,
+      "poles": 65,
+      "dnf": 60,
+      "firstGrandPrix": 1984
+    },
+    "flagImage": "./src/assets/images/flags/brazil.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Ayrton_Senna"
+  },
+  {
+    "id": "phil-hill",
+    "name": "Phill Hill",
+    "slug": "phil-hill",
+    "dayIndex": 12,
+    "nationality": "American",
+    "outlineImage": "./src/assets/images/outlines/phil-outline.png",
+    "helmetImage": "./src/assets/images/helmets/phil-helmet.png",
+    "portraitImage": "./src/assets/images/portraits/phil.png",
+    "quote": "If you win one race, you're a hero. If you lose the next, you're a loser.",
+    "teams": [
+      "Bonnier",
+      "Ferrari",
+      "Yeoman Credit",
+      "Ferrari",
+      "ATS",
+      "Filipinetti",
+      "Cooper"
+    ],
+    "stats": {
+      "grandPrix": 47,
+      "seasons": 7,
+      "titles": 1,
+      "wins": 3,
+      "podiums": 16,
+      "poles": 6,
+      "dnf": 18,
+      "firstGrandPrix": 1958
+    },
+    "flagImage": "./src/assets/images/flags/united-states.png",
+    "wikipediaUrl": "https://fr.wikipedia.org/wiki/Phil_Hill"
   }
 ]
