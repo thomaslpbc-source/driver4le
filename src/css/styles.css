@@ -521,6 +521,20 @@ button {
   visibility: hidden;
 }
 
+.clue-card.is-hidden .clue-card__body::after {
+  content: '?';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #000;
+  visibility: visible;
+  z-index: 2;
+}
+
 .clue-card__body {
   width: 100%;
   height: 100%;
@@ -921,4 +935,15 @@ button {
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+.clue-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
 }
