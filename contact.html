@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Driver4le</title>
+    <meta name="description" content="Contact du site Driver4le." />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="canonical" href="https://driver4le.com/contact.html" />
+
+    <script>
+        (() => {
+            const theme = localStorage.getItem('driver4le:theme');
+            document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bebas+Neue&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+</head>
+
+<body>
+    <main class="credits-page">
+        <div class="credits-page__shell">
+            <a class="credits-page__back" href="./index.html">← Retour au jeu</a>
+
+            <h1 class="credits-page__title">Contact</h1>
+
+            <section class="credits-page__list" aria-label="Informations de contact">
+                <article class="credits-card">
+                    <h2 class="credits-card__driver">Nous contacter</h2>
+                    <ul class="credits-card__items">
+                        <li>
+                            <span class="credits-card__label">Email :</span>
+                            <span class="credits-card__text">
+                                <a href="mailto:driver4le@gmail.com">driver4le@gmail.com</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="credits-card__label">Objet :</span>
+                            <span class="credits-card__text">
+                                Question, bug, suggestion d’amélioration ou demande liée au site.
+                            </span>
+                        </li>
+                        <li>
+                            <span class="credits-card__label">Réponse :</span>
+                            <span class="credits-card__text">
+                                Une réponse sera apportée dans la mesure du possible dans les meilleurs délais.
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
