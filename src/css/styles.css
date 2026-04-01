@@ -914,3 +914,11 @@ button {
       translate3d(var(--trophy-drift, 0px), 115vh, 0) rotate(calc(var(--trophy-rotate, 0deg) + 180deg)) scale(1.05);
   }
 }
+
+.seo-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}

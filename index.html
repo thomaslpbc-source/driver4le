@@ -4,9 +4,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Driver4le</title>
+  <title>Driver4le — Le jeu quotidien pour deviner le pilote caché</title>
   <meta name="description"
-    content="Driver4le, le jeu quotidien où il faut deviner le pilote caché derrière 6 indices." />
+    content="Driver4le est un jeu quotidien gratuit en français : devine le pilote caché en 6 indices avec une nouvelle rotation chaque jour à 12h." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="author" content="Driver4le" />
+  <meta name="keywords"
+    content="Driver4le, jeu F1, jeu formule 1, quiz pilote F1, jeu quotidien F1, pilote caché, motorsport" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="canonical" href="https://driver4le.com/" />
+  <link rel="alternate" href="https://driver4le.com/" hreflang="fr" />
+  <link rel="alternate" href="https://driver4le.com/" hreflang="x-default" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Driver4le" />
+  <meta property="og:title" content="Driver4le — Le jeu quotidien pour deviner le pilote caché" />
+  <meta property="og:description"
+    content="Chaque jour, découvre un nouveau pilote caché grâce à 6 indices : silhouette, casque, citation, écuries, stats et nationalité." />
+  <meta property="og:url" content="https://driver4le.com/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Driver4le — Le jeu quotidien pour deviner le pilote caché" />
+  <meta name="twitter:description"
+    content="Un jeu quotidien gratuit pour les fans de F1 et de sport auto. Trouve le pilote caché en 6 essais." />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Driver4le",
+      "url": "https://driver4le.com/",
+      "inLanguage": "fr",
+      "description": "Jeu quotidien gratuit en français pour deviner un pilote caché en 6 indices.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Driver4le",
+        "url": "https://driver4le.com/"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Driver4le",
+      "url": "https://driver4le.com/",
+      "applicationCategory": "Game",
+      "operatingSystem": "Web",
+      "inLanguage": "fr",
+      "isAccessibleForFree": true,
+      "genre": ["Sport", "Quiz", "Formule 1"],
+      "description": "Jeu quotidien sur navigateur où il faut deviner le pilote caché grâce à 6 indices.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bebas+Neue&display=swap"
@@ -22,7 +76,8 @@
         <button class="icon-button" id="themeButton" aria-label="Activer le mode sombre" aria-pressed="false"
           title="Activer le mode sombre">◐</button>
       </div>
-      <img class="brand-logo" src="./src/assets/images/logo/Driver4le.png" alt="Driver4le" />
+      <img class="brand-logo" src="./src/assets/images/logo/Driver4le.png"
+        alt="Logo Driver4le, jeu quotidien de pilotes" />
       <div class="topbar__right">
         <div class="countdown-card">
           <span class="countdown-card__label">Prochaine rotation</span>
@@ -33,6 +88,15 @@
 
     <main class="game-layout">
       <div class="game-frame">
+        <section class="seo-hidden" aria-label="Présentation du jeu">
+          <p class="hero-copy__eyebrow">Jeu quotidien F1</p>
+          <h1>Devine le pilote caché sur Driver4le</h1>
+          <p class="hero-copy__text">
+            Chaque jour, un nouveau pilote est à trouver en 6 essais grâce à des indices progressifs : silhouette,
+            casque, citation, écuries, statistiques et nationalité.
+          </p>
+        </section>
+
         <section class="game-panel">
           <div class="search-area">
             <label class="sr-only" for="driverSearch">Entrer un pilote</label>
@@ -45,9 +109,9 @@
           </div>
 
           <section id="resultBanner" class="result-banner" hidden>
-            <img id="resultPortrait" class="result-banner__portrait" alt="Portrait du pilote" />
+            <img id="resultPortrait" class="result-banner__portrait" alt="Portrait du pilote révélé" />
             <div>
-              <h1 id="resultName" class="result-banner__title"></h1>
+              <h2 id="resultName" class="result-banner__title"></h2>
               <p id="resultStatus" class="result-banner__status"></p>
               <p class="result-banner__text">
                 Pour plus d'informations sur le pilote, voici sa page Wikipédia
@@ -60,13 +124,13 @@
           <section class="clues-grid" aria-label="Indices du pilote du jour">
             <article class="clue-card clue-card--outline is-visible" data-clue="outline">
               <div class="clue-card__body clue-card__body--center">
-                <img id="outlineImage" class="driver-outline" alt="Silhouette du pilote" />
+                <img id="outlineImage" class="driver-outline" alt="Silhouette du pilote à deviner" />
               </div>
             </article>
 
             <article class="clue-card clue-card--helmet is-hidden" data-clue="helmet">
               <div class="clue-card__body clue-card__body--center">
-                <img id="helmetImage" class="driver-helmet" alt="Casque du pilote" />
+                <img id="helmetImage" class="driver-helmet" alt="Casque du pilote à deviner" />
               </div>
             </article>
 
@@ -90,13 +154,30 @@
 
             <article class="clue-card clue-card--nationality is-hidden" data-clue="nationality">
               <div class="clue-card__body clue-card__body--nationality">
-                <img id="flagImage" class="flag-image" alt="Drapeau du pilote" hidden />
+                <img id="flagImage" class="flag-image" alt="Drapeau du pilote à deviner" hidden />
               </div>
             </article>
           </section>
         </section>
 
-        <a class="credits-link" href="./credits.html">Crédits</a>
+        <section class="seo-hidden" aria-label="À propos de Driver4le">
+          <h2>Comment jouer à Driver4le ?</h2>
+          <p>
+            Driver4le est un jeu de navigateur gratuit pensé pour les passionnés de Formule 1 et de sport automobile.
+            Le principe est simple : tu as 6 essais pour retrouver le pilote du jour.
+          </p>
+          <p>
+            Après chaque mauvaise réponse, un nouvel indice s'affiche. Plus tu trouves vite, plus ta performance est
+            bonne. Le jeu fonctionne aussi bien sur ordinateur que sur mobile.
+          </p>
+        </section>
+
+        <footer class="site-footer">
+          <p>© 2026 Driver4le — Tous droits réservés.</p>
+          <nav aria-label="Liens de pied de page">
+            <a class="credits-link" href="./credits.html">Crédits</a>
+          </nav>
+        </footer>
       </div>
     </main>
   </div>
@@ -120,7 +201,7 @@
         Si vous échouez au dernier indice, le pilote est révélé.
       </p>
       <p>
-        Chaque jour la page est actualisé à 12:00 (heure locale). Bon jeu !
+        Chaque jour la page est actualisée à 12:00 (heure locale). Bon jeu !
       </p>
       <p>
         Une question ? Contact : <a href="mailto:driver4le@gmail.com" style="text-decoration: underline;">
@@ -129,6 +210,12 @@
       </p>
     </form>
   </dialog>
+
+  <noscript>
+    <div style="max-width: 720px; margin: 24px auto; padding: 16px; font-family: Arial, sans-serif;">
+      Driver4le a besoin de JavaScript pour afficher le pilote du jour et gérer les essais.
+    </div>
+  </noscript>
 
   <script type="module" src="./src/js/app.js"></script>
 </body>
