@@ -1,9 +1,9 @@
-
 export const GAME_CONFIG = {
   maxAttempts: 6,
   clueOrder: ['outline', 'helmet', 'quote', 'teams', 'stats', 'nationality'],
-  rotationIntervalMs: 360 * 1000,
   storagePrefix: 'driver4le',
+  rotationHourLocal: 12,
+  baseDayIndexDate: '2026-03-31',
 };
 
 export const UI_TEXT = {

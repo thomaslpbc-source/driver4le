@@ -178,9 +178,10 @@ export function updateInputAvailability(elements, state) {
 
 export function renderCountdown(elements, milliseconds) {
   const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
-  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
   const seconds = String(totalSeconds % 60).padStart(2, '0');
-  elements.rotationCountdown.textContent = `${minutes}:${seconds}`;
+  elements.rotationCountdown.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
 export function renderThemeButton(elements, theme) {
