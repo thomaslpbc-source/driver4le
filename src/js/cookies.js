@@ -12,25 +12,19 @@ function setConsent(value) {
 
 function hideCookieBanner() {
     const banner = document.getElementById('cookieBanner');
-    if (banner) {
-        banner.hidden = true;
-    }
+    if (banner) banner.hidden = true;
 }
 
 function showCookieBanner() {
     const banner = document.getElementById('cookieBanner');
-    if (banner) {
-        banner.hidden = false;
-    }
+    if (banner) banner.hidden = false;
 }
 
 function loadAnalytics(personalized = true) {
     if (window.driver4leAnalyticsLoaded) return;
     window.driver4leAnalyticsLoaded = true;
 
-    if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
-        return;
-    }
+    if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
     const script = document.createElement('script');
     script.async = true;
@@ -67,14 +61,31 @@ function initializeAdSlots() {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
             slot.dataset.adsInitialized = 'true';
         } catch (error) {
-            console.error('Erreur initialisation bloc AdSense:', error);
+            console.error('Erreur AdSense:', error);
         }
     });
 }
 
+function hideEmptyAds() {
+    setTimeout(() => {
+        document.querySelectorAll('.adsense-slot').forEach((ad) => {
+            const hasContent = ad.innerHTML.trim().length > 0;
+            const hasLoadedAttr =
+                ad.getAttribute('data-ad-status') === 'filled' ||
+                ad.getAttribute('data-ad-status') === 'unfilled';
+
+            if (!hasContent && !hasLoadedAttr) {
+                const section = ad.closest('.ad-section');
+                if (section) section.remove();
+            }
+        });
+    }, 2500);
+}
+
 function loadAdSense({ personalized = true } = {}) {
     if (ADSENSE_CLIENT_ID === 'ca-pub-XXXXXXXXXXXXXXXX') {
-        console.warn('AdSense non configuré : remplace ADSENSE_CLIENT_ID par ton vrai Publisher ID.');
+        console.warn('AdSense non configuré');
+        hideEmptyAds();
         return;
     }
 
@@ -83,6 +94,7 @@ function loadAdSense({ personalized = true } = {}) {
 
     if (window.driver4leAdsenseLoaded) {
         initializeAdSlots();
+        hideEmptyAds();
         return;
     }
 
@@ -92,6 +104,7 @@ function loadAdSense({ personalized = true } = {}) {
     script.async = true;
     script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`;
     script.crossOrigin = 'anonymous';
+
     script.onload = () => {
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({
@@ -99,13 +112,21 @@ function loadAdSense({ personalized = true } = {}) {
                 enable_page_level_ads: true
             });
         } catch (error) {
-            console.error('Erreur chargement Auto Ads:', error);
+            console.error('Erreur Auto Ads:', error);
         }
 
         initializeAdSlots();
+        hideEmptyAds();
+    };
+
+    script.onerror = () => {
+        hideEmptyAds();
     };
 
     document.head.appendChild(script);
+
+    // Important : couvre aussi les cas où un adblock bloque silencieusement le script
+    hideEmptyAds();
 }
 
 function enablePersonalizedMode() {

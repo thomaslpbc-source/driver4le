@@ -1090,3 +1090,7 @@ button {
     max-height: 180px;
   }
 }
+
+.adsense-slot:empty {
+  display: none;
+}
