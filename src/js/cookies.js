@@ -1,4 +1,6 @@
 const COOKIE_CONSENT_KEY = 'driver4le:ad-consent';
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+const ADSENSE_CLIENT_ID = 'ca-pub-XXXXXXXXXXXXXXXX';
 
 function getConsent() {
     return localStorage.getItem(COOKIE_CONSENT_KEY);
@@ -25,9 +27,6 @@ function showCookieBanner() {
 function loadAnalytics(personalized = true) {
     if (window.driver4leAnalyticsLoaded) return;
     window.driver4leAnalyticsLoaded = true;
-
-    // Remplace par ton vrai ID GA4 quand tu l'auras.
-    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
 
     if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
         return;
@@ -58,44 +57,52 @@ function loadAnalytics(personalized = true) {
     });
 }
 
+function initializeAdSlots() {
+    if (!window.adsbygoogle || !document.querySelector('.js-adsense-slot')) return;
+
+    document.querySelectorAll('.js-adsense-slot').forEach((slot) => {
+        if (slot.dataset.adsInitialized === 'true') return;
+
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            slot.dataset.adsInitialized = 'true';
+        } catch (error) {
+            console.error('Erreur initialisation bloc AdSense:', error);
+        }
+    });
+}
+
 function loadAdSense({ personalized = true } = {}) {
-    if (window.driver4leAdsenseLoaded) return;
-    window.driver4leAdsenseLoaded = true;
-
-    // Remplace par ton vrai Publisher ID AdSense quand tu l'auras.
-    const ADSENSE_CLIENT_ID = 'ca-pub-XXXXXXXXXXXXXXXX';
-
     if (ADSENSE_CLIENT_ID === 'ca-pub-XXXXXXXXXXXXXXXX') {
+        console.warn('AdSense non configuré : remplace ADSENSE_CLIENT_ID par ton vrai Publisher ID.');
         return;
     }
 
     window.adsbygoogle = window.adsbygoogle || [];
+    window.adsbygoogle.requestNonPersonalizedAds = personalized ? 0 : 1;
 
-    // On met d'abord les requêtes en pause, le temps de fixer le mode.
-    window.adsbygoogle.pauseAdRequests = 1;
-
-    if (!personalized) {
-        window.adsbygoogle.requestNonPersonalizedAds = 1;
-    } else {
-        window.adsbygoogle.requestNonPersonalizedAds = 0;
+    if (window.driver4leAdsenseLoaded) {
+        initializeAdSlots();
+        return;
     }
+
+    window.driver4leAdsenseLoaded = true;
 
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`;
     script.crossOrigin = 'anonymous';
     script.onload = () => {
-        window.adsbygoogle.pauseAdRequests = 0;
-
-        // Auto ads
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: ADSENSE_CLIENT_ID,
                 enable_page_level_ads: true
             });
-        } catch (e) {
-            console.error('Erreur chargement Auto Ads:', e);
+        } catch (error) {
+            console.error('Erreur chargement Auto Ads:', error);
         }
+
+        initializeAdSlots();
     };
 
     document.head.appendChild(script);
@@ -107,8 +114,6 @@ function enablePersonalizedMode() {
 }
 
 function enableNonPersonalizedMode() {
-    // Analytics désactivé ici par prudence.
-    // Si tu veux l'activer sans personnalisation, on peut l'ajuster après.
     loadAdSense({ personalized: false });
 }
 

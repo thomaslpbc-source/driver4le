@@ -1002,3 +1002,70 @@ button {
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* =====================
+   AdSense placements
+   ===================== */
+
+.ad-section {
+  width: min(100%, 980px);
+  margin: 0 auto 22px;
+}
+
+.ad-section--hero {
+  margin-bottom: 26px;
+}
+
+.ad-section--mid {
+  margin-top: 26px;
+}
+
+.ad-section--recommendations {
+  margin-top: 28px;
+}
+
+.ad-card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 52%),
+    var(--panel);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ad-card__label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.adsense-slot {
+  width: 100%;
+  min-height: 96px;
+}
+
+.ad-card--multiplex .adsense-slot {
+  min-height: 280px;
+}
+
+@media (max-width: 720px) {
+  .ad-section {
+    margin-bottom: 18px;
+  }
+
+  .ad-card {
+    border-radius: 18px;
+    padding: 14px;
+  }
+
+  .ad-card--multiplex .adsense-slot {
+    min-height: 250px;
+  }
+}
