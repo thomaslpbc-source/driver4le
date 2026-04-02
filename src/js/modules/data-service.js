@@ -1,7 +1,5 @@
 import { GAME_CONFIG } from './config.js';
 
-const DAY_MS = 24 * 60 * 60 * 1000;
-
 export async function loadDrivers() {
   const response = await fetch('./src/data/drivers.json');
   if (!response.ok) {
@@ -14,7 +12,7 @@ export async function loadDrivers() {
 
 function parseLocalDate(dateString) {
   const [year, month, day] = dateString.split('-').map(Number);
-  return new Date(year, month - 1, day);
+  return new Date(year, month - 1, day, 0, 0, 0, 0);
 }
 
 function getBaseDate() {
@@ -33,17 +31,31 @@ function getDateAtLocalHour(date, hour) {
   );
 }
 
-function getFirstRotationDate() {
-  const baseDate = getBaseDate();
+function addDays(date, days) {
   return new Date(
-    baseDate.getFullYear(),
-    baseDate.getMonth(),
-    baseDate.getDate() + 1,
-    GAME_CONFIG.rotationHourLocal,
-    0,
-    0,
-    0,
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate() + days,
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    date.getMilliseconds(),
   );
+}
+
+function getFirstRotationDate() {
+  return getDateAtLocalHour(addDays(getBaseDate(), 1), GAME_CONFIG.rotationHourLocal);
+}
+
+function getCurrentRotationStart(currentDate) {
+  const todayRotation = getDateAtLocalHour(currentDate, GAME_CONFIG.rotationHourLocal);
+  return currentDate >= todayRotation ? todayRotation : addDays(todayRotation, -1);
+}
+
+function getCalendarDayDiff(startDate, endDate) {
+  const startMidnight = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+  const endMidnight = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+  return Math.round((endMidnight.getTime() - startMidnight.getTime()) / (24 * 60 * 60 * 1000));
 }
 
 export function getRotationKey(now = Date.now()) {
@@ -54,7 +66,8 @@ export function getRotationKey(now = Date.now()) {
     return 0;
   }
 
-  return 1 + Math.floor((currentDate.getTime() - firstRotationDate.getTime()) / DAY_MS);
+  const currentRotationStart = getCurrentRotationStart(currentDate);
+  return 1 + getCalendarDayDiff(firstRotationDate, currentRotationStart);
 }
 
 export function getActiveDriver(drivers, now = Date.now()) {
@@ -71,10 +84,10 @@ export function getTimeUntilNextRotation(now = Date.now()) {
     return firstRotationDate.getTime() - currentDate.getTime();
   }
 
-  const nextRotationDate = getDateAtLocalHour(
-    new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1),
-    GAME_CONFIG.rotationHourLocal,
-  );
+  const todayRotation = getDateAtLocalHour(currentDate, GAME_CONFIG.rotationHourLocal);
+  const nextRotationDate = currentDate < todayRotation
+    ? todayRotation
+    : addDays(todayRotation, 1);
 
   return nextRotationDate.getTime() - currentDate.getTime();
 }
