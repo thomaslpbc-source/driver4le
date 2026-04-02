@@ -1,6 +1,6 @@
 const COOKIE_CONSENT_KEY = 'driver4le:ad-consent';
 const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
-const ADSENSE_CLIENT_ID = 'ca-pub-XXXXXXXXXXXXXXXX';
+const ADSENSE_CLIENT_ID = 'ca-pub-7946180038139939';
 
 function getConsent() {
     return localStorage.getItem(COOKIE_CONSENT_KEY);
