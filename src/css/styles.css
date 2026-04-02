@@ -1094,3 +1094,11 @@ button {
 .adsense-slot:empty {
   display: none;
 }
+
+.adsense-slot[data-ad-status="unfilled"] {
+  display: none !important;
+}
+
+.adsense-slot:empty {
+  display: none !important;
+}

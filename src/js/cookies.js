@@ -69,17 +69,16 @@ function initializeAdSlots() {
 function hideEmptyAds() {
     setTimeout(() => {
         document.querySelectorAll('.adsense-slot').forEach((ad) => {
+            const adStatus = ad.getAttribute('data-ad-status');
             const hasContent = ad.innerHTML.trim().length > 0;
-            const hasLoadedAttr =
-                ad.getAttribute('data-ad-status') === 'filled' ||
-                ad.getAttribute('data-ad-status') === 'unfilled';
 
-            if (!hasContent && !hasLoadedAttr) {
+            // Supprime si rien n'est affiché ou si AdSense dit explicitement "unfilled"
+            if (!hasContent || adStatus === 'unfilled') {
                 const section = ad.closest('.ad-section');
                 if (section) section.remove();
             }
         });
-    }, 2500);
+    }, 3000);
 }
 
 function loadAdSense({ personalized = true } = {}) {
