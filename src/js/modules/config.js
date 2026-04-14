@@ -3,7 +3,7 @@ export const GAME_CONFIG = {
   clueOrder: ['outline', 'helmet', 'quote', 'teams', 'stats', 'nationality'],
   storagePrefix: 'driver4le',
   rotationHourLocal: 12,
-  baseDayIndexDate: '2026-03-31',
+  baseDayIndexDate: '2026-04-14',
 };
 
 export const UI_TEXT = {
